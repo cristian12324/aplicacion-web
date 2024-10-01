@@ -1,0 +1,26 @@
+<p>Lista de ingredientes!</p>
+<div *ngFor="let ingredientes of ingrediente">
+    <p>{{ingredientes.idingrediente}}</p>
+    <p>{{ingredientes.nombre}}</p>
+    <p>{{ingredientes.cantidad}}</p>
+    <hr>
+    <button (click)="editarIngrediente(ingredientes)">Editar</button>
+    <button (click)="borrarIngrediente(ingredientes)">Borrar</button>
+</div>
+
+<form (ngSubmit)="guardarIngrediente()" #newsForm="ngForm">
+    <div>
+        <label for="idingrediente">idingrediente:</label>
+        <input type="text" id="idingrediente" required [(ngModel)]="ingredientes.idingrediente" name="idingrediente">
+    </div>
+    <div>
+        <label for="nombre">nombre:</label>
+        <input type="text" id="nombre" required [(ngModel)]="ingredientes.nombre" name="nombre">
+    </div>
+    <div>
+        <label for="cantidad">cantidad:</label>
+        <input type="text" id="cantidad" [(ngModel)]="ingredientes.cantidad" name="cantidad">
+    </div>
+    <button type="submit">Publicar ingrediente</button>
+</form>
+

@@ -1,0 +1,40 @@
+<p>Lista de Platillos!</p>
+<div *ngFor="let platillos of platillo">
+    <p>{{platillos.idplatillo}}</p>
+    <p>{{platillos.foto}}</p>
+    <p>{{platillos.precio}}</p>
+    <p>{{platillos.descripcion}}</p>
+    <hr>
+    <button (click)="editarPlatillo(platillos)">Editar</button>
+    <button (click)="borrarPlatillo(platillos.idplatillo)">Borrar</button>
+</div>
+
+<form (ngSubmit)="guardarPlatillo()" #newsForm="ngForm">
+    <div>
+        <label for="idplatillo">idplatillo:</label>
+        <input type="text" id="idplatillo" required [(ngModel)]="platillos.idplatillo" name="idplatillo">
+    </div>
+    <div>
+        <label for="foto">foto (URL):</label>
+        <input type="text" id="foto" required [(ngModel)]="platillos.foto" name="foto">
+    </div>
+    <div>
+        <label for="precio">precio:</label>
+        <input type="text" id="precio" [(ngModel)]="platillos.precio" name="precio">
+    </div>
+    <div>
+        <label for="descripcion">descripcion:</label>
+        <input type="text" id="descripcion" required [(ngModel)]="platillos.descripcion" name="descripcion">
+    </div>
+    <p> Ingredientes: <button type="button" class="btn btn-primary" (click)="agregarIngrediente()">+ </button> </p>
+
+    <div *ngFor="let d of platillos.platilloIngredienteLista">
+        <label for="ingrediente">ingrediente:</label>
+        <input type="text" id="ingrediente" [(ngModel)]="d.ingredienteIdIngrediente" name="ingredienteIdIngrediente">
+        <label for="cantidad">Cantidad</label>
+        <input type="text" id="cantidad" [(ngModel)]="d.cantidad" name="cantidad">
+    </div>
+    
+    
+    <button type="submit">Publicar platillo</button>
+</form>

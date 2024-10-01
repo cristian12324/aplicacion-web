@@ -1,0 +1,16 @@
+<p>Login</p>
+<hr>
+<form (ngSubmit)="login()" id="loginForm">
+    <label>Email:*</label>
+    <input type="text" [(ngModel)]="usuario.email"
+     [ngModelOptions]="{standalone:true}"
+    required>
+
+    <label>Password:*</label>
+    <input type="password" [(ngModel)]="usuario.password"
+     [ngModelOptions]="{standalone:true}"
+    required>
+
+    <input type="submit" class="btn btn-primary" value="ingresar">
+
+</form>
