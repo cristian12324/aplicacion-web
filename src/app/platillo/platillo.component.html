@@ -1,5 +1,7 @@
-<p>Lista de Platillos!</p>
-<div *ngFor="let platillos of platillo">
+<app-menu></app-menu>
+<br>
+<br>
+<h1 Class= "text-Center">Lista de Platillos!</h1><div *ngFor="let platillos of platillo">
     <p>{{platillos.idplatillo}}</p>
     <p>{{platillos.foto}}</p>
     <p>{{platillos.precio}}</p>
@@ -26,15 +28,29 @@
         <label for="descripcion">descripcion:</label>
         <input type="text" id="descripcion" required [(ngModel)]="platillos.descripcion" name="descripcion">
     </div>
-    <p> Ingredientes: <button type="button" class="btn btn-primary" (click)="agregarIngrediente()">+ </button> </p>
-
-    <div *ngFor="let d of platillos.platilloIngredienteLista">
-        <label for="ingrediente">ingrediente:</label>
-        <input type="text" id="ingrediente" [(ngModel)]="d.ingredienteIdIngrediente" name="ingredienteIdIngrediente">
-        <label for="cantidad">Cantidad</label>
-        <input type="text" id="cantidad" [(ngModel)]="d.cantidad" name="cantidad">
-    </div>
     
+    <p>Ingredientes:</p>
     
+    <select [(ngModel)]="ingredienteSeleccionado" name="ingredienteSeleccionado">
+        <option *ngFor="let ing of ingredientes" [ngValue]="ing">{{ ing.idingrediente }} - {{ ing.nombre }}</option>
+      </select>
+      
+    <button type="button" (click)="agregarIngrediente()">Agregar Ingrediente</button>
+  
+    <div *ngFor="let d of platillos.platilloIngredienteLista; let i = index">
+        <label for="ingrediente">Ingrediente ID:</label>
+        <input type="text" id="ingrediente" [(ngModel)]="d.ingredienteIdIngrediente" name="ingredienteIdIngrediente_{{i}}" readonly>
+        <label for="ingredienteNombre">Ingrediente Nombre:</label>
+        <input type="text" id="ingredienteNombre" [(ngModel)]="d.ingrediente" name="ingredienteNombre_{{i}}" readonly>
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" [(ngModel)]="d.cantidad" name="cantidad_{{i}}">
+      </div>
+      
+    
+     
+  
     <button type="submit">Publicar platillo</button>
+    <br>
+    <br>
+    <br>
 </form>

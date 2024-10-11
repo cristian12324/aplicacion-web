@@ -1,4 +1,7 @@
-<p>Lista de Anuncios!</p>
+<app-menu></app-menu>
+<div Class = "container mt-5">
+<h1 Class= "text-Center">Lista de Anuncios!</h1>
+
 <div *ngFor="let anuncios of noticia">
     <p>{{anuncios.idanunos}}</p>
     <p>{{anuncios.titulo}}</p>
@@ -11,7 +14,9 @@
 </div>
 
 <form (ngSubmit)="guardarAnuncio()" #newsForm="ngForm">
+    <br>
     <div>
+        <p>Lista para Publicar!</p>
         <label for="titulo">Titulo:</label>
         <input type="text" id="titulo" required [(ngModel)]="noticias.titulo" name="titulo">
     </div>
@@ -27,40 +32,5 @@
         <label for="fecha">Fecha:</label>
         <input type="date" id="fecha" required [(ngModel)]="noticias.fecha" name="fecha">
     </div>
-    <button type="submit">Publicar Anuncio</button>
-</form>
-
-<p>Lista de Calificación!</p>
-<div *ngFor="let calificaciones of calificacion">
-    <p>{{calificaciones.idcalificacion}}</p>
-    <p>{{calificaciones.nota}}</p>
-    <p>{{calificaciones.nombre}}</p>
-    <p>{{calificaciones.fechaCalificacion}}</p>
-    <p>{{calificaciones.noExamen}}</p>
-    <hr>
-    <button (click)="editarCalificacion(calificaciones)">Editar</button>
-    <button (click)="borrarCalificacion(calificaciones)">Borrar</button>
-</div>
-
-<button (click)="nuevaCalificacion()">Nueva Calificación</button>
-
-<p>Lista para Editar Calificación</p>
-<form (ngSubmit)="guardarCalificacion()" #calificacionForm="ngForm">
-    <div>
-        <label for="nota">Nota:</label>
-        <input type="text" id="nota" required [(ngModel)]="calificaciones.nota" name="nota">
-    </div>
-    <div>
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" required [(ngModel)]="calificaciones.nombre" name="nombre">
-    </div>
-    <div>
-        <label for="fechaCalificacion">Fecha Calificación:</label>
-        <input type="date" id="fechaCalificacion" required [(ngModel)]="calificaciones.fechaCalificacion" name="fechaCalificacion">
-    </div>
-    <div>
-        <label for="noExamen">No Examen:</label>
-        <input type="text" id="noExamen" required [(ngModel)]="calificaciones.noExamen" name="noExamen">
-    </div>
-    <button type="submit">Publicar Calificación</button>
+    <button type="btn btn-success">Publicar Anuncio</button>
 </form>

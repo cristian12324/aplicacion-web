@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, NgFor } from '@angular/common';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-ingrediente',
   standalone: true,
-  imports: [FormsModule, NgFor,  HttpClientModule, CommonModule],
+  imports: [FormsModule, NgFor,  HttpClientModule, CommonModule,MenuComponent],
   templateUrl: './ingrediente.component.html',
   styleUrl: './ingrediente.component.css'
 })

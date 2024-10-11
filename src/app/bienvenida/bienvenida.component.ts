@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { MenuComponent } from '../menu/menu.component'; 
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-bienvenida',
   standalone: true,
-  imports: [FormsModule, HttpClientModule, CommonModule],
+  imports: [FormsModule, HttpClientModule, CommonModule, MenuComponent],
   templateUrl: './bienvenida.component.html',
-  styleUrls: ['./bienvenida.component.css'] 
+  styleUrls: ['./bienvenida.component.css']
 })
 export class BienvenidaComponent {
+
+
 
   noticia: any[] = [];
   noticias: any = {}; 

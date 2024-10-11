@@ -1,4 +1,7 @@
-<p>Lista de ingredientes!</p>
+<app-menu></app-menu>
+<br>
+<br>
+<h1 Class= "text-Center">Lista de Ingredientes!</h1>
 <div *ngFor="let ingredientes of ingrediente">
     <p>{{ingredientes.idingrediente}}</p>
     <p>{{ingredientes.nombre}}</p>
@@ -22,5 +25,8 @@
         <input type="text" id="cantidad" [(ngModel)]="ingredientes.cantidad" name="cantidad">
     </div>
     <button type="submit">Publicar ingrediente</button>
+    <br>
+    <br>
+    <br>
 </form>
 
