@@ -1,36 +1,42 @@
 <app-menu></app-menu>
-<div Class = "container mt-5">
-<h1 Class= "text-Center">Lista de Anuncios!</h1>
+<div class="container mt-5">
+    <h1 class="text-center">Lista de Anuncios!</h1>
 
-<div *ngFor="let anuncios of noticia">
-    <p>{{anuncios.idanunos}}</p>
-    <p>{{anuncios.titulo}}</p>
-    <p>{{anuncios.imagen}}</p>
-    <p>{{anuncios.texto}}</p>
-    <p>{{anuncios.publicacion}}</p>
-    <hr>
-    <button (click)="editarAnuncio(anuncios)">Editar</button>
-    <button (click)="borrarAnuncios(anuncios)">Borrar</button>
+    <div class="anuncio" *ngFor="let anuncios of noticia">
+        <p class="anuncio-id">ID: {{anuncios.idanunos}}</p>
+        <p class="anuncio-titulo">{{anuncios.titulo}}</p>
+
+        <img *ngIf="anuncios.imagen" [src]="imagenAnuncio(anuncios)" alt="Imagen del anuncio" width="100" class="imagen-anuncio">
+        <p class="anuncio-texto">{{anuncios.texto}}</p>
+        <p class="anuncio-fecha">{{anuncios.publicacion}}</p>
+        <hr>
+        <div class="acciones">
+            <button (click)="editarAnuncio(anuncios)" class="btn-editar">Editar</button>
+            <button (click)="borrarAnuncios(anuncios)" class="btn-borrar">Borrar</button>
+        </div>
+    </div>
+
+    <form (ngSubmit)="guardarAnuncio()" #newsForm="ngForm" class="form-publicacion">
+        <br>
+        <h2>Lista para Publicar!</h2>
+        <div class="form-group">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" required [(ngModel)]="noticias.titulo" name="titulo" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" required [(ngModel)]="noticias.descripcion" name="descripcion" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="imagen">Imagen:</label>
+            <input type="file" id="imagen" (change)="imagenSeleccionada($event)" name="imagen" class="form-control">
+
+            <img *ngIf="imageBase64" [src]="imageBase64" alt="Imagen Previa" width="100" class="imagen-previa">
+        </div>
+        <div class="form-group">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" required [(ngModel)]="noticias.fecha" name="fecha" class="form-control">
+        </div>
+        <button type="submit" class="btn-publicar">Publicar Anuncio</button>
+    </form>
 </div>
-
-<form (ngSubmit)="guardarAnuncio()" #newsForm="ngForm">
-    <br>
-    <div>
-        <p>Lista para Publicar!</p>
-        <label for="titulo">Titulo:</label>
-        <input type="text" id="titulo" required [(ngModel)]="noticias.titulo" name="titulo">
-    </div>
-    <div>
-        <label for="descripcion">Descripción:</label>
-        <input type="text" id="descripcion" required [(ngModel)]="noticias.descripcion" name="descripcion">
-    </div>
-    <div>
-        <label for="imagen">Imagen (URL):</label>
-        <input type="text" id="imagen" [(ngModel)]="noticias.imagen" name="imagen">
-    </div>
-    <div>
-        <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" required [(ngModel)]="noticias.fecha" name="fecha">
-    </div>
-    <button type="btn btn-success">Publicar Anuncio</button>
-</form>

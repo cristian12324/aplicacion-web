@@ -1,27 +1,27 @@
 <app-menu></app-menu>
 <br>
 <br>
-<h1 Class= "text-Center">Lista de Ingredientes!</h1>
-<div *ngFor="let ingredientes of ingrediente">
-    <p>{{ingredientes.idingrediente}}</p>
-    <p>{{ingredientes.nombre}}</p>
-    <p>{{ingredientes.cantidad}}</p>
+<h1 class="text-center">Lista de Ingredientes!</h1>
+<div *ngFor="let ingredientes of ingrediente" class="ingrediente-item">
+    <p class="ingrediente-id">ID: {{ingredientes.idingrediente}}</p>
+    <p class="ingrediente-nombre">Nombre: {{ingredientes.nombre}}</p>
+    <p class="ingrediente-cantidad">Cantidad: {{ingredientes.cantidad}}</p>
     <hr>
     <button (click)="editarIngrediente(ingredientes)">Editar</button>
     <button (click)="borrarIngrediente(ingredientes)">Borrar</button>
 </div>
 
-<form (ngSubmit)="guardarIngrediente()" #newsForm="ngForm">
+<form (ngSubmit)="guardarIngrediente()" #newsForm="ngForm" class="form-ingredientes">
     <div>
-        <label for="idingrediente">idingrediente:</label>
+        <label for="idingrediente">ID Ingrediente:</label>
         <input type="text" id="idingrediente" required [(ngModel)]="ingredientes.idingrediente" name="idingrediente">
     </div>
     <div>
-        <label for="nombre">nombre:</label>
+        <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" required [(ngModel)]="ingredientes.nombre" name="nombre">
     </div>
     <div>
-        <label for="cantidad">cantidad:</label>
+        <label for="cantidad">Cantidad:</label>
         <input type="text" id="cantidad" [(ngModel)]="ingredientes.cantidad" name="cantidad">
     </div>
     <button type="submit">Publicar ingrediente</button>
@@ -29,4 +29,3 @@
     <br>
     <br>
 </form>
-

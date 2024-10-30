@@ -6,7 +6,8 @@ import { IngredienteComponent } from './ingrediente/ingrediente.component';
 import { MiPerfilComponent } from './mi-perfil/mi-perfil.component';
 import { ConsultaComponent } from './consulta/consulta.component';
 import { AnunciosComponent } from './anuncios/anuncios.component';
-
+import { PedidoComponent } from './pedido/pedido.component';
+import { ConsultaPedidosComponent } from './consulta-pedidos/consulta-pedidos.component';
 export const routes: Routes = [
 
     {path:'',component:LoginComponent},
@@ -16,4 +17,6 @@ export const routes: Routes = [
     {path: 'Me', component: MiPerfilComponent}, 
     {path: 'consulta', component: ConsultaComponent}, 
     {path: 'anuncios', component: AnunciosComponent}, 
+    {path: 'pedido', component: PedidoComponent}, 
+    {path: 'consultaPedidos', component: ConsultaPedidosComponent}, 
 ];

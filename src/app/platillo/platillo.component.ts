@@ -8,7 +8,7 @@ import { MenuComponent } from '../menu/menu.component';
 @Component({
   selector: 'app-platillo',
   standalone: true,
-  imports: [FormsModule, NgFor, HttpClientModule, CommonModule,MenuComponent],
+  imports: [FormsModule, NgFor, HttpClientModule, CommonModule, MenuComponent],
   templateUrl: './platillo.component.html',
   styleUrls: ['./platillo.component.css']
 })
@@ -18,6 +18,7 @@ export class PlatilloComponent {
   platillos: any = { platilloIngredienteLista: [] }; 
   ingredientes: any[] = []; 
   ingredienteSeleccionado: any = {}; 
+  imageBase64: string = ''; 
 
   constructor(private http: HttpClient) {
     this.buscarPlatillo();
@@ -50,6 +51,7 @@ export class PlatilloComponent {
   resetForm() {
     this.platillos = { platilloIngredienteLista: [] };
     this.ingredienteSeleccionado = {}; 
+    this.imageBase64 = ''; 
   }
 
   borrarPlatillo(idplatillo: number) {
@@ -57,6 +59,7 @@ export class PlatilloComponent {
       .subscribe({
         next: () => {
           this.cargarPlatillo();
+          this.resetForm();
         },
         error: (error) => console.error(`Error al eliminar el platillo:`, error)
       });
@@ -65,7 +68,6 @@ export class PlatilloComponent {
   editarPlatillo(platillo: any) {
     this.platillos = { ...platillo }; 
   }
-
 
   buscarIngrediente() {
     this.http.get<any[]>('http://localhost:8080/ingredientes/buscar').subscribe(data => {
@@ -85,8 +87,21 @@ export class PlatilloComponent {
       this.ingredienteSeleccionado = {};
     }
   }
+  imagenSeleccionada(event: any) {
+    const file: File = event.target.files[0];
   
-
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        this.imageBase64 = reader.result as string;
+        console.log('Imagen Base64:', this.imageBase64); 
+        this.platillos.foto = this.imageBase64;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  
+  
   nuevoPlatillo() {
     this.resetForm();
   }
@@ -106,5 +121,5 @@ export class PlatilloComponent {
         });
     }
   }
-}
+}  
 

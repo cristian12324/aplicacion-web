@@ -1,13 +1,56 @@
-.container{
-    margin-top: 50px;
+.text-center {
+    text-align: center;
 }
 
-.row{
-    margin-top: 50px;
+.ingrediente-item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background-color: #fff;
 }
 
-.btn-block {
-    width: 100px;
+.ingrediente-id {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.ingrediente-nombre, .ingrediente-cantidad {
+    color: #555;
+}
+
+.form-ingredientes {
+    max-width: 600px;
+    margin: auto;
     padding: 20px;
-    font-size: 15px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
 }

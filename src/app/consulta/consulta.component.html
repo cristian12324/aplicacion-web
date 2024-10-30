@@ -1,12 +1,10 @@
 <app-menu></app-menu>
-<form>
-<br>
-<h1 Class= "text-Center">Lista de Usuarios!</h1>
-<div *ngFor="let Consultas of consulta">
-    <p>{{Consultas.idadministrador}}</p>
-    <p>{{Consultas.usuario}}</p>
-    <hr>
-</div>
-
+<form class="form-usuarios">
+    <br>
+    <h1 class="text-center">Lista de Usuarios!</h1>
+    <div *ngFor="let Consultas of consulta" class="usuario-item">
+        <p class="usuario-id">ID: {{Consultas.idadministrador}}</p>
+        <p class="usuario-nombre">Usuario: {{Consultas.usuario}}</p>
+        <hr>
+    </div>
 </form>
-

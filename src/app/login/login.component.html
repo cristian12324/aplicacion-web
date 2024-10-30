@@ -3,17 +3,14 @@
 
 <form (ngSubmit)="login()" id="loginForm">
     <div class="mb-3">
-        <label  class="form-label">Email:*</label>
+        <label class="form-label">Email:*</label>
         <input type="text" class="form-control" placeholder="name@example.com" [(ngModel)]="usuario.email"
-        [ngModelOptions]="{standalone:true}"
-       required>
-      </div>
+        [ngModelOptions]="{standalone:true}" required>
+    </div>
 
-      <label class="form-label">Password:*</label>
-<input type="password" class="form-control" aria-describedby="passwordHelpBlock"  [(ngModel)]="usuario.password"
-[ngModelOptions]="{standalone:true}"
-required>
-<br>
-<input type="submit" class="btn btn-primary float-start" value="ingresar">
-
+    <label class="form-label">Password:*</label>
+    <input type="password" class="form-control" aria-describedby="passwordHelpBlock"  [(ngModel)]="usuario.password"
+    [ngModelOptions]="{standalone:true}" required>
+    <br>
+    <input type="submit" class="btn btn-primary" value="ingresar">
 </form>

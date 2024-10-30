@@ -1,0 +1,39 @@
+<div class="lista-pedidos">
+  <h2>Lista de Pedidos</h2>
+  <table class="tabla-pedidos">
+      <thead>
+          <tr>
+              <th>ID Pedido</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+              <th>Total</th>
+              <th>Platillos</th>
+              <th>Acciones</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let pedido of pedidos">
+              <td>{{ pedido.idpedido }}</td>
+              <td>{{ pedido.fechaHoraOrden }}</td>
+              <td>{{ pedido.estadoDeOrden }}</td>
+              <td>{{ pedido.total | currency }}</td>
+              <td>
+                  <ul>
+                      <li *ngFor="let detalle of pedido.detallePedidoList">
+                          {{ detalle.nombre }} (Cantidad: {{ detalle.cantidad }})
+                      </li>
+                  </ul>
+              </td>
+              <td>
+                  <select [(ngModel)]="nuevoEstado" class="estado-select">
+                      <option value="Pendiente">Pendiente</option>
+                      <option value="En Proceso">En Proceso</option>
+                      <option value="Completado">Completado</option>
+                  </select>
+                  <button (click)="actualizarEstado(pedido.idpedido)" class="btn-guardar">Guardar</button>
+                  <button (click)="eliminarPedido(pedido.idpedido)" class="btn-eliminar">Eliminar</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>

@@ -1,9 +1,13 @@
 <app-menu></app-menu>
 <br>
 <br>
-<h1 Class= "text-Center">Lista de Platillos!</h1><div *ngFor="let platillos of platillo">
+<h1 class="text-center">Lista de Platillos!</h1>
+<div *ngFor="let platillos of platillo">
     <p>{{platillos.idplatillo}}</p>
-    <p>{{platillos.foto}}</p>
+    
+    <!-- Mostramos la foto si está disponible en base64 -->
+    <img *ngIf="platillos.foto" [src]="platillos.foto" alt="Imagen Platillo" width="100" />
+    
     <p>{{platillos.precio}}</p>
     <p>{{platillos.descripcion}}</p>
     <hr>
@@ -16,27 +20,33 @@
         <label for="idplatillo">idplatillo:</label>
         <input type="text" id="idplatillo" required [(ngModel)]="platillos.idplatillo" name="idplatillo">
     </div>
+    
     <div>
-        <label for="foto">foto (URL):</label>
-        <input type="text" id="foto" required [(ngModel)]="platillos.foto" name="foto">
+        <label for="foto">foto (Imagen):</label>
+        <input type="file" id="foto" (change)="imagenSeleccionada($event)" name="foto">
+        
+        <!-- Previsualización de la imagen cargada -->
+        <img *ngIf="imageBase64" [src]="imageBase64" alt="Imagen Previa" width="100" />
     </div>
+    
     <div>
         <label for="precio">precio:</label>
         <input type="text" id="precio" [(ngModel)]="platillos.precio" name="precio">
     </div>
+    
     <div>
         <label for="descripcion">descripcion:</label>
         <input type="text" id="descripcion" required [(ngModel)]="platillos.descripcion" name="descripcion">
     </div>
-    
+
     <p>Ingredientes:</p>
-    
+
     <select [(ngModel)]="ingredienteSeleccionado" name="ingredienteSeleccionado">
         <option *ngFor="let ing of ingredientes" [ngValue]="ing">{{ ing.idingrediente }} - {{ ing.nombre }}</option>
-      </select>
-      
+    </select>
+
     <button type="button" (click)="agregarIngrediente()">Agregar Ingrediente</button>
-  
+
     <div *ngFor="let d of platillos.platilloIngredienteLista; let i = index">
         <label for="ingrediente">Ingrediente ID:</label>
         <input type="text" id="ingrediente" [(ngModel)]="d.ingredienteIdIngrediente" name="ingredienteIdIngrediente_{{i}}" readonly>
@@ -44,13 +54,11 @@
         <input type="text" id="ingredienteNombre" [(ngModel)]="d.ingrediente" name="ingredienteNombre_{{i}}" readonly>
         <label for="cantidad">Cantidad:</label>
         <input type="number" id="cantidad" [(ngModel)]="d.cantidad" name="cantidad_{{i}}">
-      </div>
-      
-    
-     
-  
+    </div>
+
     <button type="submit">Publicar platillo</button>
     <br>
     <br>
     <br>
 </form>
+

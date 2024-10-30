@@ -1,0 +1,24 @@
+<div>
+    <h2>Crear Pedido</h2>
+    
+    <select [(ngModel)]="platilloSeleccionado" name="platillo">
+      <option *ngFor="let platillo of platillosDisponibles" [ngValue]="platillo">{{ platillo.descripcion }}</option>
+    </select>
+    
+    <input type="number" [(ngModel)]="cantidadSeleccionada" name="cantidad" min="1" />
+    
+    <button (click)="agregarPlatillo()">Agregar Platillo</button>
+  
+    <h3>Detalles del Pedido</h3>
+    <ul>
+        <ul>
+            <li *ngFor="let detalle of pedido.detallePedidoList">
+                {{ detalle.platillo?.descripcion || 'Platillo no disponible' }} - Cantidad: {{ detalle.cantidad }} - Precio: {{ detalle.platillo?.precio || 'N/A' }}
+            </li>
+        </ul>
+        
+  
+    <h4>Total: {{ pedido.total }}</h4>
+    
+    <button (click)="guardarPedido()">Guardar Pedido</button>
+  

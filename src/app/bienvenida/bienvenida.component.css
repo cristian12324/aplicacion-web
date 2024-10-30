@@ -1,13 +1,102 @@
-.container{
-    margin-top: 50px;
-}
-
-.row{
-    margin-top: 50px;
-}
-
-.btn-block {
-    width: 100px;
+.container {
+    max-width: 800px;
+    margin: auto;
     padding: 20px;
-    font-size: 15px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #333;
+}
+
+.anuncio {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.anuncio-id {
+    font-weight: bold;
+}
+
+.anuncio-titulo {
+    font-size: 1.2em;
+    color: #007bff;
+}
+
+.imagen-anuncio {
+    margin: 10px 0;
+}
+
+.anuncio-texto,
+.anuncio-fecha {
+    margin: 5px 0;
+}
+
+.acciones {
+    margin-top: 10px;
+}
+
+.btn-editar,
+.btn-borrar {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.btn-editar {
+    background-color: #4CAF50; 
+}
+
+.btn-borrar {
+    background-color: #f44336; 
+}
+
+.btn-editar:hover {
+    background-color: #45a049;
+}
+
+.btn-borrar:hover {
+    background-color: #e53935;
+}
+
+.form-publicacion {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-top: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.imagen-previa {
+    margin-top: 10px;
+}
+
+.btn-publicar {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; 
+    color: white;
+    cursor: pointer;
+}
+
+.btn-publicar:hover {
+    background-color: #0056b3;
 }
