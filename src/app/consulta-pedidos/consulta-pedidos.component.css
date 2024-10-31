@@ -43,12 +43,12 @@ h2 {
 }
 
 .btn-guardar {
-    background-color: #4CAF50; /* Verde */
+    background-color: #4CAF50; 
     color: white;
 }
 
 .btn-eliminar {
-    background-color: #f44336; /* Rojo */
+    background-color: #f44336;
     color: white;
 }
 

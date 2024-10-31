@@ -3,13 +3,13 @@
 <br>
 <h1 class="text-center">Lista de Platillos!</h1>
 <div *ngFor="let platillos of platillo">
-    <p>{{platillos.idplatillo}}</p>
+    <p><strong>ID Platillo:</strong> {{platillos.idplatillo}}</p>
     
-    <!-- Mostramos la foto si está disponible en base64 -->
     <img *ngIf="platillos.foto" [src]="platillos.foto" alt="Imagen Platillo" width="100" />
     
-    <p>{{platillos.precio}}</p>
-    <p>{{platillos.descripcion}}</p>
+    <p><strong>Precio:</strong> {{ platillos.precio | quetzales }}</p>
+
+    <p><strong>Descripción:</strong> {{ platillos.descripcion }}</p>
     <hr>
     <button (click)="editarPlatillo(platillos)">Editar</button>
     <button (click)="borrarPlatillo(platillos.idplatillo)">Borrar</button>
@@ -17,25 +17,24 @@
 
 <form (ngSubmit)="guardarPlatillo()" #newsForm="ngForm">
     <div>
-        <label for="idplatillo">idplatillo:</label>
+        <label for="idplatillo">ID Platillo:</label>
         <input type="text" id="idplatillo" required [(ngModel)]="platillos.idplatillo" name="idplatillo">
     </div>
     
     <div>
-        <label for="foto">foto (Imagen):</label>
+        <label for="foto">Foto (Imagen):</label>
         <input type="file" id="foto" (change)="imagenSeleccionada($event)" name="foto">
-        
-        <!-- Previsualización de la imagen cargada -->
+     
         <img *ngIf="imageBase64" [src]="imageBase64" alt="Imagen Previa" width="100" />
     </div>
     
     <div>
-        <label for="precio">precio:</label>
+        <label for="precio">Precio:</label>
         <input type="text" id="precio" [(ngModel)]="platillos.precio" name="precio">
     </div>
     
     <div>
-        <label for="descripcion">descripcion:</label>
+        <label for="descripcion">Descripción:</label>
         <input type="text" id="descripcion" required [(ngModel)]="platillos.descripcion" name="descripcion">
     </div>
 
@@ -56,9 +55,8 @@
         <input type="number" id="cantidad" [(ngModel)]="d.cantidad" name="cantidad_{{i}}">
     </div>
 
-    <button type="submit">Publicar platillo</button>
+    <button type="submit">Publicar Platillo</button>
     <br>
     <br>
     <br>
 </form>
-

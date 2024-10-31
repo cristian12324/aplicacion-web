@@ -4,11 +4,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MenuComponent } from '../menu/menu.component';
+import { QuetzalesPipe } from '../quetzales.pipe'; 
 
 @Component({
   selector: 'app-platillo',
   standalone: true,
-  imports: [FormsModule, NgFor, HttpClientModule, CommonModule, MenuComponent],
+  imports: [FormsModule, NgFor, HttpClientModule, CommonModule, MenuComponent, QuetzalesPipe],
   templateUrl: './platillo.component.html',
   styleUrls: ['./platillo.component.css']
 })
@@ -19,6 +20,7 @@ export class PlatilloComponent {
   ingredientes: any[] = []; 
   ingredienteSeleccionado: any = {}; 
   imageBase64: string = ''; 
+  
 
   constructor(private http: HttpClient) {
     this.buscarPlatillo();
@@ -87,6 +89,7 @@ export class PlatilloComponent {
       this.ingredienteSeleccionado = {};
     }
   }
+
   imagenSeleccionada(event: any) {
     const file: File = event.target.files[0];
   
@@ -100,8 +103,7 @@ export class PlatilloComponent {
       reader.readAsDataURL(file);
     }
   }
-  
-  
+
   nuevoPlatillo() {
     this.resetForm();
   }
@@ -121,5 +123,4 @@ export class PlatilloComponent {
         });
     }
   }
-}  
-
+}

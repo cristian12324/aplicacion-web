@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { QuetzalesPipe } from '../quetzales.pipe';
 
 @Component({
   selector: 'app-consulta-pedidos',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,QuetzalesPipe],
   templateUrl: './consulta-pedidos.component.html',
   styleUrls: ['./consulta-pedidos.component.css']
 })
